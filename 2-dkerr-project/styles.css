@@ -5,12 +5,19 @@
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif;
   font-style: italic;
   font-weight: 700;
+  color: #4a6d70;
+}
+
+h1 {
+  font-size: 3em;
 }
 
 a, a:visited {
@@ -23,11 +30,30 @@ button {
   text-decoration: none;
   border: none;
   outline: none;
+  margin-top: 0;
+  margin-bottom: 1em;
+  font-size: 1em;
+  padding: .5em 1em;
+  background: #b83e38;
+  color: #fff;
+}
+
+button:hover {
+  background: #822c28;
 }
 
 /* style classes */
 
+.header {
+  background: #dffefd;
+}
 
+.select-img {
+  width: 500px;
+  height: 500px;
+  background-size: cover;
+  border-radius: 100%;
+}
 
 
 /***********************

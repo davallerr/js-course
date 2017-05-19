@@ -8,32 +8,62 @@
 
     <body>
 
-        <div class='container-header'>
+        <div class='container'>
           <div class='header'>
             <div class='row'>
               <h1>Create Your Hero</h1>
-              <button id='initialize'>Initialize</button>
+              <button id='initialize' onclick='selectElement()'>INITIALIZE</button>
             </div>
           </div>
         </div>
 
-        <div class='container-select'>
+        <div class='container'>
           <div class='select'>
             <div class='row'>
-              <img id='select-1' class='select-img'></img>
-              <img id='select-2' class='select-img'></img>
-              <img id='select-3' class='select-img'></img>
-              <img id='select-4' class='select-img'></img>
+              <div class='select-head'>
+                <h2 id='select-head'></2>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-lg-1 col-md-1'>
+                <div class='select-img'>
+                  <img id='select-1-img' src=''></img>
+                </div>
+                <p id='select-1-cap'></p>
+              </div>
+              <div class='col-lg-1 col-md-1'>
+                <div class='select-img'>
+                  <img id='select-2-img' src=''></img>
+                </div>
+                <p id='select-2-cap'></p>
+              </div>
+              <div class='col-lg-1 col-md-1'>
+                <div class='select-img'>
+                  <img id='select-3-img' src=''></img>
+                </div>
+                <p id='select-3-cap'></p>
+              </div>
+              <div class='col-lg-1 col-md-1'>
+                <div class='select-img'>
+                  <img id='select-4-img' src=''></img>
+                </div>
+                <p id='select-4-cap'></p>
+              </div>
+            </div>
+            <div class='row'>
+              <button id='next' onclick='checkStep()'>NEXT</button>
             </div>
           </div>
         </div>
 
-        <div class='container-avatar'>
-          <div class='avatar'>
+        <div class='container'>
+          <div class='result'>
             <div class='row'>
-              <img id='avatar'></img>
-              <h2>Welcome, Hero</h2>
-              <p id='avatar-result'></p>
+              <h1 id='result-head'></h1>
+              <p id='result-cap'></p>
+              <div class='result-img'>
+                <img id='result-img' src=''></img>
+              </div>
             </div>
           </div>
         </div>

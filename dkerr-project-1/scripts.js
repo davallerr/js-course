@@ -13,14 +13,20 @@ var selectImg3 = document.getElementById('select-3-img');
 var selectCap3 = document.getElementById('select-3-cap');
 var selectImg4 = document.getElementById('select-4-img');
 var selectCap4 = document.getElementById('select-4-cap');
+var resultHead = document.getElementById('result-head');
 var resultCap = document.getElementById('result-cap');
 var resultImg = document.getElementById('result-img');
 
 // choose element function
 function selectElement() {
+  // clear any existing character
   element = '';
   weapon = '';
   familiar = '';
+
+  resultHead.innerHTML = '';
+  resultCap.innerHTML = '';
+  resultImg.setAttribute('src', '');
 
   console.log('selecting element');
   console.log('element: ' + element);
@@ -102,12 +108,10 @@ function showResult() {
   console.log('weapon: ' + weapon);
   console.log('familiar: ' + familiar);
   console.log(element + weapon + familiar);
-  document.getElementById('result-head').innerHTML = 'Welcome, Hero';
 
-  // displays results
+  // sets result head, caption, and image
+  resultHead.innerHTML = 'Welcome, Hero';
   resultCap.innerHTML = 'Master of all things ' + element + ', ' + weapon + ', and ' + familiar;
-
-  // retrieve final avatar image
   resultImg.setAttribute('src', 'img/results/' + element + '-' + weapon + '-' + familiar + '.jpg');
 }
 

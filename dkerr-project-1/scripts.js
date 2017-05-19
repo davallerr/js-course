@@ -1,5 +1,5 @@
 
-/* character creation variables */
+// character creation variables
 var element = '';
 var weapon = '';
 var familiar = '';
@@ -16,7 +16,86 @@ var selectCap4 = document.getElementById('select-4-cap');
 var resultCap = document.getElementById('result-cap');
 var resultImg = document.getElementById('result-img');
 
-/* show result function */
+// choose element function
+function selectElement() {
+  element = '';
+  weapon = '';
+  familiar = '';
+
+  console.log('selecting element');
+  console.log('element: ' + element);
+  console.log('weapon: ' + weapon);
+  console.log('familiar: ' + familiar);
+
+  // populate options
+  selectHead.innerHTML = 'Select Your Element';
+  selectImg1.setAttribute('src', 'img/element-fire.jpg');
+  selectCap1.innerHTML = 'FIRE';
+  selectImg2.setAttribute('src', 'img/element-water.jpg');
+  selectCap2.innerHTML = 'WATER';
+  selectImg3.setAttribute('src', 'img/element-earth.jpg');
+  selectCap3.innerHTML = 'EARTH';
+  selectImg4.setAttribute('src', 'img/element-air.jpg');
+  selectCap4.innerHTML = 'AIR';
+
+  // set variables based on image click
+  selectImg1.onclick = function() {element = 'fire';}
+  selectImg2.onclick = function() {element = 'water';}
+  selectImg3.onclick = function() {element = 'earth';}
+  selectImg4.onclick = function() {element = 'air';}
+}
+
+// choose weapon function
+function selectWeapon() {
+  console.log('selecting weapon');
+  console.log('element: ' + element);
+  console.log('weapon: ' + weapon);
+  console.log('familiar: ' + familiar);
+
+  // populate options
+  selectHead.innerHTML = 'Select Your Weapon';
+  selectImg1.setAttribute('src', 'img/weapon-sword.jpg');
+  selectCap1.innerHTML = 'SWORD';
+  selectImg2.setAttribute('src', 'img/weapon-axe.jpg');
+  selectCap2.innerHTML = 'AXE';
+  selectImg3.setAttribute('src', 'img/weapon-staff.jpg');
+  selectCap3.innerHTML = 'STAFF';
+  selectImg4.setAttribute('src', 'img/weapon-dagger.jpg');
+  selectCap4.innerHTML = 'DAGGER';
+
+  // set variables based on image click
+  selectImg1.onclick = function() {weapon = 'sword';}
+  selectImg2.onclick = function() {weapon = 'axe';}
+  selectImg3.onclick = function() {weapon = 'staff';}
+  selectImg4.onclick = function() {weapon = 'dagger';}
+}
+
+// choose familiar function
+function selectFamiliar() {
+  console.log('selecting familiar');
+  console.log('element: ' + element);
+  console.log('weapon: ' + weapon);
+  console.log('familiar: ' + familiar);
+
+  // populate options
+  selectHead.innerHTML = 'Select Your Familiar';
+  selectImg1.setAttribute('src', 'img/familiar-wolf.jpg');
+  selectCap1.innerHTML = 'WOLF';
+  selectImg2.setAttribute('src', 'img/familiar-tiger.jpg');
+  selectCap2.innerHTML = 'TIGER';
+  selectImg3.setAttribute('src', 'img/familiar-bear.jpg');
+  selectCap3.innerHTML = 'BEAR';
+  selectImg4.setAttribute('src', 'img/familiar-ghost.jpg');
+  selectCap4.innerHTML = 'GHOST';
+
+  // set variables based on image click
+  selectImg1.onclick = function() {familiar = 'wolf';}
+  selectImg2.onclick = function() {familiar = 'tiger';}
+  selectImg3.onclick = function() {familiar = 'bear';}
+  selectImg4.onclick = function() {familiar = 'ghost';}
+}
+
+// show result function
 function showResult() {
   console.log('showing result...');
   console.log('element: ' + element);
@@ -25,12 +104,16 @@ function showResult() {
   console.log(element + weapon + familiar);
   document.getElementById('result-head').innerHTML = 'Welcome, Hero';
 
-  /* displays results */
+  // displays results
   resultCap.innerHTML = 'Master of all things ' + element + ', ' + weapon + ', and ' + familiar;
 
-  /* retrieve final avatar image */
+  // retrieve final avatar image
+  resultImg.setAttribute('src', 'img/results/' + element + '-' + weapon + '-' + familiar + '.jpg');
 
-  /* air */
+  /**********************************************************************
+  proof of my foolishness
+
+  // air
   if(element + weapon + familiar === 'AIRAXEBEAR') {
     resultImg.setAttribute('src', 'img/results/air-axe-bear.jpg');
   }
@@ -80,7 +163,7 @@ function showResult() {
     resultImg.setAttribute('src', 'img/results/air-sword-wolf.jpg');
   }
 
-  /* earth */
+  // earth
   if(element + weapon + familiar === 'EARTHAXEBEAR') {
     resultImg.setAttribute('src', 'img/results/earth-axe-bear.jpg');
   }
@@ -130,7 +213,7 @@ function showResult() {
     resultImg.setAttribute('src', 'img/results/earth-sword-wolf.jpg');
   }
 
-  /* fire */
+  // fire
   if(element + weapon + familiar === 'FIREAXEBEAR') {
     resultImg.setAttribute('src', 'img/results/fire-axe-bear.jpg');
   }
@@ -180,7 +263,7 @@ function showResult() {
     resultImg.setAttribute('src', 'img/results/fire-sword-wolf.jpg');
   }
 
-  /* water */
+  // water
   if(element + weapon + familiar === 'WATERAXEBEAR') {
     resultImg.setAttribute('src', 'img/results/water-axe-bear.jpg');
   }
@@ -229,89 +312,10 @@ function showResult() {
   if(element + weapon + familiar === 'WATERSWORDWOLF') {
     resultImg.setAttribute('src', 'img/results/water-sword-wolf.jpg');
   }
-
+  **********************************************************************/
 }
 
-/* choose familiar function */
-function selectFamiliar() {
-  console.log('selecting familiar');
-  console.log('element: ' + element);
-  console.log('weapon: ' + weapon);
-  console.log('familiar: ' + familiar);
-
-  /* populate options */
-  selectHead.innerHTML = 'Select Your Familiar';
-  selectImg1.setAttribute('src', 'img/familiar-wolf.jpg');
-  selectCap1.innerHTML = 'WOLF';
-  selectImg2.setAttribute('src', 'img/familiar-tiger.jpg');
-  selectCap2.innerHTML = 'TIGER';
-  selectImg3.setAttribute('src', 'img/familiar-bear.jpg');
-  selectCap3.innerHTML = 'BEAR';
-  selectImg4.setAttribute('src', 'img/familiar-ghost.jpg');
-  selectCap4.innerHTML = 'GHOST';
-
-  /* set variables based on image click */
-  selectImg1.onclick = function() {familiar = 'WOLF';}
-  selectImg2.onclick = function() {familiar = 'TIGER';}
-  selectImg3.onclick = function() {familiar = 'BEAR';}
-  selectImg4.onclick = function() {familiar = 'GHOST';}
-}
-
-/* choose weapon function */
-function selectWeapon() {
-  console.log('selecting weapon');
-  console.log('element: ' + element);
-  console.log('weapon: ' + weapon);
-  console.log('familiar: ' + familiar);
-
-  /* populate options */
-  selectHead.innerHTML = 'Select Your Weapon';
-  selectImg1.setAttribute('src', 'img/weapon-sword.jpg');
-  selectCap1.innerHTML = 'SWORD';
-  selectImg2.setAttribute('src', 'img/weapon-axe.jpg');
-  selectCap2.innerHTML = 'AXE';
-  selectImg3.setAttribute('src', 'img/weapon-staff.jpg');
-  selectCap3.innerHTML = 'STAFF';
-  selectImg4.setAttribute('src', 'img/weapon-dagger.jpg');
-  selectCap4.innerHTML = 'DAGGER';
-
-  /* set variables based on image click */
-  selectImg1.onclick = function() {weapon = 'SWORD';}
-  selectImg2.onclick = function() {weapon = 'AXE';}
-  selectImg3.onclick = function() {weapon = 'STAFF';}
-  selectImg4.onclick = function() {weapon = 'DAGGER';}
-}
-
-/* choose element function */
-function selectElement() {
-  element = '';
-  weapon = '';
-  familiar = '';
-
-  console.log('selecting element');
-  console.log('element: ' + element);
-  console.log('weapon: ' + weapon);
-  console.log('familiar: ' + familiar);
-
-  /* populate options */
-  selectHead.innerHTML = 'Select Your Element';
-  selectImg1.setAttribute('src', 'img/element-fire.jpg');
-  selectCap1.innerHTML = 'FIRE';
-  selectImg2.setAttribute('src', 'img/element-water.jpg');
-  selectCap2.innerHTML = 'WATER';
-  selectImg3.setAttribute('src', 'img/element-earth.jpg');
-  selectCap3.innerHTML = 'EARTH';
-  selectImg4.setAttribute('src', 'img/element-air.jpg');
-  selectCap4.innerHTML = 'AIR';
-
-  /* set variables based on image click */
-  selectImg1.onclick = function() {element = 'FIRE';}
-  selectImg2.onclick = function() {element = 'WATER';}
-  selectImg3.onclick = function() {element = 'EARTH';}
-  selectImg4.onclick = function() {element = 'AIR';}
-}
-
-/* check step function */
+// check step function
 function checkStep() {
   console.log('checking step...');
   if(element === '') {

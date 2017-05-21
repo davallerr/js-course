@@ -1,19 +1,37 @@
 ///////////////////////////////////////
 // Lecture: Hoisting
 
+/*
 
+// function declaration is set in hoistin stage
+calculateAge(1975);
 
+function calculateAge(year) {
+  console.log(2017 - year);
+}
 
+// function expression not set in hoisting stage
+// retirement(1989);
 
+var retirement = function(year) {
+  console.log(65 - (2017 - year));
+}
 
+// variables are scanned/created in hoisting, but without value, so undefined
+console.log(age);
+var age = 23;
+console.log(age);
 
+function foo() {
+  console.log(age);
+  var age = 65;
+  console.log(age);
+}
 
+foo();
+console.log(age);
 
-
-
-
-
-
+*/
 
 
 
@@ -52,7 +70,7 @@ function first() {
 
     function second() {
         var c = 'Hey!';
-        third()
+        third();
     }
 }
 
@@ -67,11 +85,39 @@ function third() {
 ///////////////////////////////////////
 // Lecture: The this keyword
 
+// console.log(this);
 
+calculateAge(1989);
 
+function calculateAge(year) {
+  console.log(2017 - year);
+  console.log(this);
+}
 
+var john = {
+  name: 'John',
+  yearOfBirth: 1990,
+  calculateAge: function() {
+    console.log(this);
+    console.log(2017 - this.yearOfBirth);
 
+    /*
+    function innerFunction() {
+      console.log(this);
+    }
 
+    innerFunction();
+    */
+  }
+};
 
+john.calculateAge();
 
+var mike = {
+  name: 'Mike',
+  yearOfBirth: 1987,
+};
 
+mike.calculateAge = john.calculateAge;
+
+mike.calculateAge();

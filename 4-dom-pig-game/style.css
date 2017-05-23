@@ -67,7 +67,7 @@ body {
     font-size: 80px;
     font-weight: 100;
     color: #EB4D4D;
-    margin-bottom: 80px;
+    margin-bottom: 100px;
 }
 
 .active { background-color: #f7f7f7; }
@@ -138,17 +138,25 @@ i {
 }
 
 .btn-new { top: 45px;}
-.btn-roll { top: 353px;}
-.btn-hold { top: 417px;}
+.btn-roll { top: 390px;}
+.btn-hold { top: 430px;}
 .btn-goal { top: 560px;}
 
 .dice {
     position: absolute;
     left: 50%;
-    top: 178px;
+    top: 110px;
     transform: translateX(-50%);
     height: 100px;
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
+}
+
+#dice-1 {
+  top: 125px;
+}
+
+#dice-2 {
+  top: 240px;
 }
 
 .goal-label {

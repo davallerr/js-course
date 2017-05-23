@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, gamePlaying;
+var goalScore, scores, roundScore, prevScore, activePlayer, gamePlaying;
 
 init();
 
@@ -42,6 +42,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
   if(gamePlaying) {
     // random number
     var dice = Math.floor(Math.random() * 6) + 1;
+    console.log(dice);
 
     // display result
     var diceDOM = document.querySelector('.dice');
@@ -50,9 +51,16 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
     // update round score if 1 wasn't rolled
     if(dice !== 1) {
+      // check for double 6
+      if(prevScore === 6 && dice === 6) {
+        scores[activePlayer] = 0;
+        document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+        nextPlayer();
+      }
       // add score
       roundScore += dice;
       document.querySelector('#current-' + activePlayer).textContent = roundScore;
+      prevScore = dice;
     } else {
       nextPlayer();
     }
@@ -69,7 +77,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
     // check for win
-    if(scores[activePlayer] >= 100) {
+    if(scores[activePlayer] >= goalScore) {
       document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
       document.querySelector('.dice').style.display = 'none';
       document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
@@ -115,6 +123,7 @@ function init() {
   roundScore = 0;
   activePlayer = 0;
   gamePlaying = true;
+  goalScore = document.getElementById('goal-score').value;
 
   document.querySelector('.dice').style.display = 'none';
 
@@ -129,4 +138,19 @@ function init() {
   document.querySelector('.player-0-panel').classList.remove('active');
   document.querySelector('.player-1-panel').classList.remove('active');
   document.querySelector('.player-0-panel').classList.add('active');
+
+  // create winScore
+  /*
+  var winScoreInput = prompt('How many points to win?');
+  console.log(winScoreInput);
+  winScore = parseInt(winScoreInput, 10);
+  console.log(winScore);
+
+  if(winScoreInput !== /\d+$/) {
+    alert('Please enter a number.');
+    init();
+  }
+  */
 }
+
+document.querySelector('.btn-goal').addEventListener('click', init);

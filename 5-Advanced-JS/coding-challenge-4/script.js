@@ -38,11 +38,11 @@
     this.correct = correct
   }
 
-  var danceQuestion = new Question('What is the best dance?', ['0: The Running Man', '1: The Macarena', '2: The Cabbage Patch', '3: Awkwardly standing off to the side of the room'], 3);
-  var foodQuestion = new Question('Are burritos a triumph of food delivery technology?', ['0: Yes', '1: No'], 0);
-  var musicQuestion = new Question('What is the best kind of music?', ['0: wailin\' guitar solos', '1: basses getting mad dropped', '2: the kind you\'re to afraid to tell anyone you like'], 2);
-  var fingersQuestion = new Question('How many fingers?', ['0: 0', '1: 1', '2: 2', '3: 3', '4: 4', '5: 5, idiot'], 5);
-  var yesQuestion = new Question('Yes or no?', ['0: Yes', '1: No', '2: I will not be contained by your binary limits!'], 2);
+  var danceQuestion = new Question('What is the best dance?', ['The Running Man', 'The Macarena', 'The Cabbage Patch', 'Awkwardly standing off to the side of the room'], 3);
+  var foodQuestion = new Question('Are burritos a triumph of food delivery technology?', ['Yes', 'No'], 0);
+  var musicQuestion = new Question('What is the best kind of music?', ['Wailin\' guitar solos', 'Basses getting mad dropped', 'The kind you\'re to afraid to tell anyone you like'], 2);
+  var fingersQuestion = new Question('How many fingers?', ['0', '1', '2', '3', '4', '5, idiot'], 5);
+  var yesQuestion = new Question('Yes or no?', ['Yes', 'No', 'I will not be contained by your binary limits!'], 2);
 
   var questions = [danceQuestion, foodQuestion, musicQuestion, fingersQuestion, yesQuestion];
   var score = 0;
@@ -51,9 +51,9 @@
   Question.prototype.ask = function() {
     console.log(this.question);
     for(var i=0; i<this.answers.length; i++) {
-      console.log(this.answers[i]);
+      console.log(i + ': ' + this.answers[i]);
     }
-    var input = prompt('Submit the number of your answer').toLowerCase();
+    var input = prompt('Submit the number of your answer');
     var response;
     if (input !== 'exit') {
       response = parseInt(input);

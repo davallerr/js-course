@@ -342,27 +342,3 @@ var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20));
 console.log(ages);
 console.log(fullJapan);
 */
-
-////////////////////////////////////////////////////
-// coding challenge 4
-////////////////////////////////////////////////////
-// fun quiz game in the console
-
-/*
-1   Build function constructor called Question to describe question. Include:
-    a) question itself
-    b) answer options
-    c) correct answer (number)
-2   Create a couple of questions using constructor
-3   Store them all in an array
-4   Select one random question and log to console with answer options (hint: write method for question objects)
-5   Use prompt function to ask user for correct answer, using numbers
-6   Check if answer is correct and log to console if correct or not (hint: another method)
-7   Suppose this code would be a plugin for other programmers, so make sure all code is private and doesn't interfere with other programmers code (hint: IIFE)
-
---EXPERT--
-8   After displaying result, display next random question so game never ends (hint: write function for this and call after displaying result of current question)
-9   Be careful: after task 8, game literally never ends, so include quit option if user writes 'exit' instead of an answer. Task 8 function then isn't called.
-10  Track user's score. Each correct adds 1.
-11  Display score in the console. Use another method.
-*/

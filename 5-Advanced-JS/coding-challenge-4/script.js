@@ -60,31 +60,49 @@
     } else {
       response = input;
     }
-    this.check(response, this.correct);
+    this.check(response, this.correct, keepScore);
   }
 
-  Question.prototype.check = function(response, correct) {
+  Question.prototype.check = function(response, correct, keepScore) {
+    var score;
+
     if (response === correct) {
-      score++;
+      score = keepScore(true);
       console.log('---------------------------------');
       console.log('-- Yoooouuuuuu\'re correct!');
-      console.log('-- Current score: ' + score);
-      console.log('---------------------------------');
+      this.showScore(score);
       nextQuestion();
     } else if (response === 'exit') {
       // end game
+      score = keepScore(false);
       console.log('---------------------------------');
       console.log('-- Stop this madness!');
-      console.log('-- Your final score: ' + score);
-      console.log('---------------------------------');
+      this.showScore(score);
     } else {
+      score = keepScore(false);
       console.log('---------------------------------');
       console.log('-- I can\'t believe you\'ve done this.');
-      console.log('-- Current score: ' + score);
-      console.log('---------------------------------');
+      this.showScore(score);
       nextQuestion();
     }
   }
+
+  Question.prototype.showScore = function(score) {
+    console.log('-- Current score: ' + score);
+    console.log('---------------------------------');
+  }
+
+  function addScore() {
+    var score = 0;
+    return function(right) {
+      if(right) {
+        score++;
+      }
+      return score;
+    }
+  }
+
+  var keepScore = addScore();
 
   function nextQuestion() {
     var nextQuestion = questions[Math.floor(Math.random() * questions.length)];

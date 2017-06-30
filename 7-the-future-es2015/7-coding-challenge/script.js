@@ -20,26 +20,79 @@ print data to console
 ES6 features: classes, subclasses, template strings, default parameters, maps, arrow functions, destructuring, etc
 */
 
-let parks = new Map();
+class Feature {
+  constructor(name, yearBuilt) {
+    this.name = name;
+    this.yearBuilt = yearBuilt;
+  }
+}
 
-parks.set('key', 'value');
-
-parks.prototype.newFunction = function(key, value) {
-  console.log(`new function says ${key} and ${value}`);
-};
-
-let street = new Map();
-
-class Park {
-  constructor(age, area, trees) {
-    this.age = age;
+class Park extends Feature {
+  constructor(name, yearBuilt, area, trees) {
+    super(name, yearBuilt);
     this.area = area;
     this.trees = trees;
   }
 
-  calculateDensity() {
-    console.log(this.trees / this.area);
+  treeDensity() {
+    const density = Math.round(this.trees / this.area * 100) / 100;
+    console.log(`The park ${this.name} density: ${density} trees per square mile`);
   }
 }
 
-parks.key.newFunction();
+class Street extends Feature {
+  constructor(name, yearBuilt, length, size = 3) {
+    super(name, yearBuilt);
+    this.length = length;
+    this.size = size;
+  }
+
+  streetSize() {
+    const classification = new Map();
+    classification.set(1, 'tiny');
+    classification.set(2, 'small');
+    classification.set(3, 'normal');
+    classification.set(4, 'big');
+    classification.set(5, 'huge');
+    console.log(`The street ${this.name} is ${classification.get(this.size)}`);
+  }
+}
+
+function calcAvg(arr) {
+  const sum = arr.reduce((prev, cur, index) => prev + cur, 0);
+  return [sum, Math.round(sum / arr.length * 100) / 100];
+}
+
+const parks = [ new Park('Park Park', 1794, 1.2, 821),
+                new Park('Stark Park', 2011, 4.8, 2506),
+                new Park('Quark Park', 2017, .1, 6)];
+
+const streets = [ new Street('Drury Lane', 1820, 1.6, 5),
+                  new Street('Mulholland Drive', 2001, 2.9, 4),
+                  new Street('Hell Highway', 1979, 666),
+                  new Street('Easy Street', 1968, .1, 1)];
+
+function parkReport(parks) {
+  console.log('//////////////PARKS//////////////');
+  // density
+  parks.forEach(el => el.treeDensity());
+  // avg age
+  const ages = parks.map(el => new Date().getFullYear() - el.yearBuilt);
+  const [ageTotal, ageAvg] = calcAvg(ages);
+  console.log(`${parks.length} parks with an average age of ${ageAvg} years`);
+  // parks with >1k trees
+  const i = parks.map(el => el.trees).findIndex(el => el >= 1000);
+  console.log(`${parks[i].name} has more than 1,000 trees`);
+}
+
+function streetReport(streets) {
+  console.log('//////////////STREETS//////////////');
+  // total and avg length
+  const [lengthTotal, lengthAvg] = calcAvg(streets.map(el => el.length));
+  console.log(`${streets.length} streets with total length of ${lengthTotal} miles and average length of ${lengthAvg} miles`);
+  // size classification
+  streets.forEach(el => el.streetSize());
+}
+
+parkReport(parks);
+streetReport(streets);
